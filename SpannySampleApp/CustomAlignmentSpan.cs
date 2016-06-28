@@ -11,14 +11,14 @@ namespace SpannySampleApp
         public const int RIGHT_CENTER = 2;
         public const int RIGHT_BOTTOM = 3;
 
-        private int color = -1;
+        private Color color = Color.White;
         private int position;
 
         public CustomAlignmentSpan(int position) {
             this.position = position;
         }
 
-        public CustomAlignmentSpan(int position, int color) {
+        public CustomAlignmentSpan(int position, Color color) {
             this.position = position;
             this.color = color;
         }

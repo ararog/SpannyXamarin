@@ -1,6 +1,4 @@
-﻿using System;
-using Android.App;
-using Android.Views;
+﻿using Android.App;
 using Android.Widget;
 using Android.OS;
 using Android.Graphics;
@@ -23,7 +21,7 @@ namespace SpannySampleApp
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
             Typeface typeface = Typeface.CreateFromAsset(Assets, "fonts/Pacifico.ttf");
-            ActionBar.SetTitle(Spanny.SpanText("Spanny", new CustomTypefaceSpan(typeface)));
+            ActionBar.TitleFormatted = Spanny.SpanText("Spanny", new CustomTypefaceSpan(typeface));
             TextView textView = (TextView)FindViewById(Resource.Id.textView);
             Spanny spanny = new Spanny("StyleSpan\n", new StyleSpan(TypefaceStyle.BoldItalic))
                     .Append("CustomTypefaceSpan", new CustomTypefaceSpan(typeface))
@@ -39,14 +37,14 @@ namespace SpannySampleApp
                     .Append("\n\nBackgroundSpan", new BackgroundColorSpan(Color.LightGray))
                     .Append("\n\nCustomBackgroundSpan", new CustomBackgroundSpan(Color.DarkGray, dp(16)))
                     .Append("\n\nForegroundColorSpan", new ForegroundColorSpan(Color.LightGray))
-                    .Append("\nAlignmentSpan", new AlignmentSpan.Standard(Layout.Alignment.AlignCenter))
+                    .Append("\nAlignmentSpan", new AlignmentSpanStandard(Layout.Alignment.AlignCenter))
                     .Append("\nTextAppearanceSpan\n", new TextAppearanceSpan(this, Android.Resource.Style.TextAppearanceMedium))
                     .Append("ImageSpan", new ImageSpan(ApplicationContext, Resource.Drawable.Icon))
                     .Append("\nRelativeSizeSpan", new RelativeSizeSpan(1.5f))
                     .Append("\n\nMultiple spans", new StyleSpan(TypefaceStyle.Italic), new UnderlineSpan(),
                             new TextAppearanceSpan(this, Android.Resource.Style.TextAppearanceLarge),
-                            new AlignmentSpan.Standard(Layout.Alignment.AlignCenter), new BackgroundColorSpan(Color.LightGray));
-            textView.SetText(spanny);
+                            new AlignmentSpanStandard(Layout.Alignment.AlignCenter), new BackgroundColorSpan(Color.LightGray));
+            textView.TextFormatted = spanny;
 
             spanny = new Spanny("\n\nFind and span the word. All appearances of the word will be spanned.");
             spanny.FindAndSpan("word", new AnotherSpan());

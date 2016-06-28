@@ -8,10 +8,10 @@ namespace SpannySampleApp
     public class CustomBackgroundSpan : ReplacementSpan
     {
 
-        private int color;
+        private Color color;
         private int corner;
 
-        public CustomBackgroundSpan(int color, int corner)
+        public CustomBackgroundSpan(Color color, int corner)
         {
             this.color = color;
             this.corner = corner;

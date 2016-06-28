@@ -13,12 +13,12 @@ namespace Xamarin.Spanny
 
         }
 
-        public Spanny(ICharSequence text) : base(text)
+        public Spanny(string text) : base(text)
         {
             
         }
 
-        public Spanny(ICharSequence text, params Object[] spans) : base(text)
+        public Spanny(string text, params Object[] spans) : base(text)
         {
             foreach (Object span in spans)
             {
@@ -26,43 +26,43 @@ namespace Xamarin.Spanny
             }
         }
 
-        public Spanny(ICharSequence text, Object span) : base(text)
+        public Spanny(string text, Object span) : base(text)
         {
-            SetSpan(span, 0, text.Length());
+            SetSpan(span, 0, text.Length);
         }
 
-        public Spanny Append(ICharSequence text, params Object[] spans)
+        public Spanny Append(string text, params Object[] spans)
         {
             Append(text);
             foreach (Object span in spans)
             {
-                SetSpan(span, Length() - text.Length(), Length());
+                SetSpan(span, Length() - text.Length, Length());
             }
             return this;
         }
 
-        public Spanny Append(ICharSequence text, Object span)
+        public Spanny Append(string text, Object span)
         {
             Append(text);
-            SetSpan(span, Length() - text.Length(), Length());
+            SetSpan(span, Length() - text.Length, Length());
             return this;
         }
 
-        public Spanny Append(ICharSequence text, ImageSpan imageSpan)
+        public Spanny Append(string text, ImageSpan imageSpan)
         {
-            text = new Java.Lang.String("." + text);
+            text = "." + text;
             Append(text);
-            SetSpan(imageSpan, Length() - text.Length(), Length() - text.Length() + 1);
+            SetSpan(imageSpan, Length() - text.Length, Length() - text.Length + 1);
             return this;
         }
 
-        public new Spanny Append(ICharSequence text)
+        public new Spanny Append(string text)
         {
             base.Append(text);
             return this;
         }
 
-        public Spanny AppendText(ICharSequence text)
+        public Spanny AppendText(string text)
         {
             Append(text);
             return this;
@@ -78,7 +78,7 @@ namespace Xamarin.Spanny
             SetSpan(span, start, end, flag);
         }
 
-        public Spanny FindAndSpan(ICharSequence textToSpan, GetSpan getSpan)
+        public Spanny FindAndSpan(string textToSpan, GetSpan getSpan)
         {
             int lastIndex = 0;
             while (lastIndex != -1)
@@ -86,8 +86,8 @@ namespace Xamarin.Spanny
                 lastIndex = ToString().IndexOf(textToSpan.ToString(), lastIndex);
                 if (lastIndex != -1)
                 {
-                    SetSpan(getSpan.GetSpan(), lastIndex, lastIndex + textToSpan.Length());
-                    lastIndex += textToSpan.Length();
+                    SetSpan(getSpan.GetSpan(), lastIndex, lastIndex + textToSpan.Length);
+                    lastIndex += textToSpan.Length;
                 }
             }
             return this;
@@ -98,20 +98,20 @@ namespace Xamarin.Spanny
             Object GetSpan();
         }
 
-        public static SpannableString SpanText(ICharSequence text, params Object[] spans)
+        public static SpannableString SpanText(string text, params Object[] spans)
         {
             SpannableString spannableString = new SpannableString(text);
             foreach (Object span in spans)
             {
-                spannableString.SetSpan(span, 0, text.Length(), SpanTypes.ExclusiveExclusive);
+                spannableString.SetSpan(span, 0, text.Length, SpanTypes.ExclusiveExclusive);
             }
             return spannableString;
         }
 
-        public static SpannableString SpanText(ICharSequence text, Object span)
+        public static SpannableString SpanText(string text, Object span)
         {
             SpannableString spannableString = new SpannableString(text);
-            spannableString.SetSpan(span, 0, text.Length(), SpanTypes.ExclusiveExclusive);
+            spannableString.SetSpan(span, 0, text.Length, SpanTypes.ExclusiveExclusive);
             return spannableString;
         }
     }
