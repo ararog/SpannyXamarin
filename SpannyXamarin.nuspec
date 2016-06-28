@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>SpannyXamarin</id>
+        <version>1.0.0</version>
+        <title>Spanny</title>
+        <authors>Rogerio Araujo</authors>
+        <projectUrl>https://github.com/ararog/Spanny-xamarin</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A Xamarin port of the Android Spanny library.</description>
+        <summary>A Xamarin port of the Android Spanny library.</summary>
+        <releaseNotes>No support for Android 5 - appcompat21</releaseNotes>
+        <tags>xamarin, android</tags>
+    </metadata>
+    <files>
+        <file src="SpannySampleApp\bin\Release\Spanny.dll" target="lib\MonoAndroid\Spanny.dll" />
+    </files>
+</package>
