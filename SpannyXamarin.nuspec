@@ -5,7 +5,7 @@
         <version>1.0.0</version>
         <title>Spanny</title>
         <authors>Rogerio Araujo</authors>
-        <projectUrl>https://github.com/ararog/Spanny-xamarin</projectUrl>
+        <projectUrl>https://github.com/ararog/SpannyXamarin</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>A Xamarin port of the Android Spanny library.</description>
         <summary>A Xamarin port of the Android Spanny library.</summary>
