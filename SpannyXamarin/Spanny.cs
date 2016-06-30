@@ -78,7 +78,7 @@ namespace Xamarin.Spanny
             SetSpan(span, start, end, flag);
         }
 
-        public Spanny FindAndSpan(string textToSpan, GetSpan getSpan)
+        public Spanny FindAndSpan(string textToSpan, SpanDelegate spanDelegate)
         {
             int lastIndex = 0;
             while (lastIndex != -1)
@@ -86,17 +86,14 @@ namespace Xamarin.Spanny
                 lastIndex = ToString().IndexOf(textToSpan.ToString(), lastIndex);
                 if (lastIndex != -1)
                 {
-                    SetSpan(getSpan.GetSpan(), lastIndex, lastIndex + textToSpan.Length);
+                    SetSpan(spanDelegate(), lastIndex, lastIndex + textToSpan.Length);
                     lastIndex += textToSpan.Length;
                 }
             }
             return this;
         }
 
-        public interface GetSpan
-        {
-            Object GetSpan();
-        }
+        public delegate Object SpanDelegate();
 
         public static SpannableString SpanText(string text, params Object[] spans)
         {

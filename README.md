@@ -28,11 +28,9 @@ textView.TextFormatted = Spanny.SpanText("Underline text", new UnderlineSpan());
 Find and span multiple appearences of a string:
 ```csharp
 Spanny spanny = new Spanny("All 'a' will be red.")
-spanny.findAndSpan("a", new Spanny.GetSpan() {
-            @Override public Object getSpan() {
-                return new ForegroundColorSpan(Color.RED);
-            }
-        });
+spanny.FindAndSpan("a", () => {
+    return new ForegroundColorSpan(Color.RED);
+});
 ```
 
 Example
@@ -65,7 +63,7 @@ Spanny spanny = new Spanny("StyleSpan", new StyleSpan(Typeface.BoldItalic))
                 .Append("\n\nMultiple spans", new StyleSpan(Typeface.Italic), new UnderlineSpan(),
                         new TextAppearanceSpan(this, Android.Resource.Style.TextAppearanceLarge),
                         new AlignmentSpanStandard(Layout.Alignment.AlignCenter), new BackgroundColorSpan(Color.LightGray));
-        textView.setText(spanny);
+        textView.TextFormatted = spanny;
 ```
 
 Feel free to pull request a custom spannable.
@@ -87,6 +85,6 @@ License
     See the License for the specific language governing permissions and
     limitations under the License.
 
- [1]: https://github.com/binaryfork/Spanny/blob/master/spanny/src/main/java/com/binaryfork/spanny/Spanny.java
- [2]: https://github.com/binaryfork/Spanny/blob/master/app/src/main/java/com/binaryfork/spannysample/
+ [1]: https://github.com/ararog/SpannyXamarin/blob/master/SpannyXamarin/Spanny.cs
+ [2]: https://github.com/ararog/SpannyXamarin/tree/master/SpannySampleApp
  [3]: http://developer.android.com/reference/android/text/style/package-summary.html

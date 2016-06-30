@@ -9,7 +9,7 @@ using Java.Lang;
 
 namespace SpannySampleApp
 {
-    [Activity(Label = "SpannySampleApp", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "SpannySampleApp", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/AppTheme")]
     public class MainActivity : Activity
     {
         int count = 1;
@@ -47,7 +47,9 @@ namespace SpannySampleApp
             textView.TextFormatted = spanny;
 
             spanny = new Spanny("\n\nFind and span the word. All appearances of the word will be spanned.");
-            spanny.FindAndSpan("word", new AnotherSpan());
+            spanny.FindAndSpan("word", () => {
+                return new UnderlineSpan();
+            });
             
             textView.Append(spanny);
         }
@@ -55,14 +57,6 @@ namespace SpannySampleApp
         private int dp(int value)
         {
             return (int)System.Math.Ceiling(Resources.DisplayMetrics.Density * value);
-        }
-    }
-
-    class AnotherSpan : Spanny.GetSpan
-    {
-        Java.Lang.Object Spanny.GetSpan.GetSpan()
-        {
-            return new UnderlineSpan();
         }
     }
 }
