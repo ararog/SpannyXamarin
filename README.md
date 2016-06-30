@@ -10,23 +10,23 @@ compile 'com.binaryfork:spanny:1.0.4'
 ```
 
 ### Usage
-Use `.append(text, span)` to add and mark the text with any span:
-```java
+Use `.Append(text, span)` to add and mark the text with any span:
+```csharp
 Spanny spanny = new Spanny("Underline text", new UnderlineSpan())
-                .append("\nRed text", new ForegroundColorSpan(Color.RED))
-                .append("\nPlain text");
-textView.setText(spanny);
+                .Append("\nRed text", new ForegroundColorSpan(Color.Red))
+                .Append("\nPlain text");
+textView.TextFormatted = spanny;
 ```
-Mark the text with multiple spans: 
-```java
-spanny.append("Blue underlined text", new ForegroundColorSpan(Color.BLUE), new UnderlineSpan());
+Mark the text with multiple spans:
+```csharp
+spanny.Append("Blue underlined text", new ForegroundColorSpan(Color.Blue), new UnderlineSpan());
 ```
-If you need a single SpannableString you can use a static method `.spanText`:
-```java
-textView.setText(Spanny.spanText("Underline text", new UnderlineSpan()));
+If you need a single SpannableString you can use a static method `.SpanText`:
+```csharp
+textView.TextFormatted = Spanny.SpanText("Underline text", new UnderlineSpan());
 ```
 Find and span multiple appearences of a string:
-```java
+```csharp
 Spanny spanny = new Spanny("All 'a' will be red.")
 spanny.findAndSpan("a", new Spanny.GetSpan() {
             @Override public Object getSpan() {
@@ -34,7 +34,7 @@ spanny.findAndSpan("a", new Spanny.GetSpan() {
             }
         });
 ```
- 
+
 Example
 --------
 List of all available spans: [http://developer.android.com/reference/android/text/style/package-summary.html][3]
@@ -43,28 +43,28 @@ Check the [sample app][2] for custom spannables.
 
 You can easily make a text with over 20 styles in a single TextView:
 
-```java
-Spanny spanny = new Spanny("StyleSpan", new StyleSpan(Typeface.BOLD_ITALIC))
-                .append("CustomTypefaceSpan", new CustomTypefaceSpan(typeface))
-                .append("CustomAlignmentSpan", new CustomAlignmentSpan(CustomAlignmentSpan.RIGHT_TOP))
-                .append("\nUnderlineSpan, ", new UnderlineSpan())
-                .append(" TypefaceSpan, ", new TypefaceSpan("serif"))
-                .append("URLSpan, ", new URLSpan("google.com"))
-                .append("StrikethroughSpan", new StrikethroughSpan())
-                .append("\nQuoteSpan", new QuoteSpan(Color.RED))
-                .append("\nPlain text")
-                .append("SubscriptSpan", new SubscriptSpan())
-                .append("SuperscriptSpan", new SuperscriptSpan())
-                .append("\n\nBackgroundSpan", new BackgroundColorSpan(Color.LTGRAY))
-                .append("\n\nCustomBackgroundSpan", new CustomBackgroundSpan(Color.DKGRAY, dp(16)))
-                .append("\n\nForegroundColorSpan", new ForegroundColorSpan(Color.LTGRAY))
-                .append("\nAlignmentSpan", new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER))
-                .append("\nTextAppearanceSpan\n", new TextAppearanceSpan(this, android.R.style.TextAppearance_Medium))
-                .append("ImageSpan", new ImageSpan(getApplicationContext(), R.mipmap.ic_launcher))
-                .append("\nRelativeSizeSpan", new RelativeSizeSpan(1.5f))
-                .append("\n\nMultiple spans", new StyleSpan(Typeface.ITALIC), new UnderlineSpan(),
-                        new TextAppearanceSpan(this, android.R.style.TextAppearance_Large),
-                        new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER), new BackgroundColorSpan(Color.LTGRAY));
+```csharp
+Spanny spanny = new Spanny("StyleSpan", new StyleSpan(Typeface.BoldItalic))
+                .Append("CustomTypefaceSpan", new CustomTypefaceSpan(typeface))
+                .Append("CustomAlignmentSpan", new CustomAlignmentSpan(CustomAlignmentSpan.RIGHT_TOP))
+                .Append("\nUnderlineSpan, ", new UnderlineSpan())
+                .Append(" TypefaceSpan, ", new TypefaceSpan("serif"))
+                .Append("URLSpan, ", new URLSpan("google.com"))
+                .Append("StrikethroughSpan", new StrikethroughSpan())
+                .Append("\nQuoteSpan", new QuoteSpan(Color.Red))
+                .Append("\nPlain text")
+                .Append("SubscriptSpan", new SubscriptSpan())
+                .Append("SuperscriptSpan", new SuperscriptSpan())
+                .Append("\n\nBackgroundSpan", new BackgroundColorSpan(Color.LightGray))
+                .Append("\n\nCustomBackgroundSpan", new CustomBackgroundSpan(Color.DarkGray, dp(16)))
+                .Append("\n\nForegroundColorSpan", new ForegroundColorSpan(Color.LightGray))
+                .Append("\nAlignmentSpan", new AlignmentSpanStandard(Layout.Alignment.AlignCenter))
+                .Append("\nTextAppearanceSpan\n", new TextAppearanceSpan(this, Android.Resource.Style.TextAppearanceMedium))
+                .Append("ImageSpan", new ImageSpan(ApplicationContext, Resource.Drawable.Icon))
+                .Append("\nRelativeSizeSpan", new RelativeSizeSpan(1.5f))
+                .Append("\n\nMultiple spans", new StyleSpan(Typeface.Italic), new UnderlineSpan(),
+                        new TextAppearanceSpan(this, Android.Resource.Style.TextAppearanceLarge),
+                        new AlignmentSpanStandard(Layout.Alignment.AlignCenter), new BackgroundColorSpan(Color.LightGray));
         textView.setText(spanny);
 ```
 
