@@ -13,6 +13,6 @@
         <tags>xamarin, android</tags>
     </metadata>
     <files>
-        <file src="SpannySampleApp\bin\Release\Spanny.dll" target="lib\MonoAndroid\Spanny.dll" />
+        <file src="SpannySampleApp\bin\Release\SpannyXamarin.dll" target="lib\MonoAndroid\SpannyXamarin.dll" />
     </files>
 </package>
