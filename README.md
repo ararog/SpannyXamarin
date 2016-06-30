@@ -4,9 +4,9 @@ A helper class that extends SpannableStringBuilder and adds methods to easily ma
 ![example](http://i.imgur.com/NPnl0yy.png?1)
 
 ### Download
-You can just [copy the class][1] to your project or grab it via Gradle:
+[Download from NuGet](https://www.nuget.org/packages/SpannyXamarin/)
 ```
-compile 'com.binaryfork:spanny:1.0.4'
+Install-Package SpannyXamarin
 ```
 
 ### Usage
